@@ -1,0 +1,136 @@
+IPCONFIG
+ch1)TO BYPASS MICROSOFT ACCOUNT IN WINDOWS 11
+
+C:\WINDOWS\SYSTEM32\NCPA.CPL
+
+DISABLE INTERNET CONNECTION
+
+C:\WINDOWS\SYSTEM32\OOBE\BYPASSNRO
+
+2)WINDOWS 11 FACTORY RESET THR CMD
+
+C:\WINDOWS\SYSTEM32\SYSTEMRESET --FACTORYRESET
+
+3) DEL TEMP FILE THR CMD
+
+C:\WINDOWS\SYSTEM32\DEL/Q/F/S %TEMP%\*
+
+4) TO REPAIRE WIFI OR INTERNET SLOW PLOBLEM
+
+C:\WINDOWS\SYSTEM32\IPCONFIG /FLUSHDNS
+
+5) TO CHECK SYSTEM BEHAVIOUR AND BATTERY 
+
+C:\WINDOWS\SYSTEM32\POWERCFG \ENERGY
+
+6) TO RESTORE WINDOWS 10/11 IMAGE HEALTH 
+
+C:\WINDOWS\SYSTEM32\DISM /Online /Cleanup-Image /RestoreHealth
+
+7) FOR INTERNET PROBLEM USE 5 COMMAND
+
+C:\WINDOWS\SYSTEM32\IPCONFIG\RELEASE
+
+C:\WINDOWS\SYSTEM32\IPCONFIG\RENEW
+
+C:\WINDOWS\SYSTEM32\IPCONFIG\netsh int tcp set global autotuninglevel=normal (control buffers size and latency)
+
+C:\WINDOWS\SYSTEM32\netsh interface tcp show heuristics
+
+C:\WINDOWS\SYTEM32\netsh interface tcp set heuristics disabled
+
+C:\WINDOWS\SYSTEM32\netsh winsock reset 
+
+8) TO FACTORY RESET STORAGE DEVICE (SSD OR USB PENDRIVE)
+
+C:\WINDOWS\SYSTEM32\DISKPART
+DISKPART LIST DISK
+DISKPART SELECT DISK
+DISKPART CLEAN
+9) WMIC COMMAND
+
+1) C:\>wmic bios get serialnumber
+2) C:\>wmic csproduct get name
+3) C:\wmic diskdrive get status
+4) c:\wmic diskdrive get model,serialnumber,size,mediatype
+5) c:\wmic memorychip get BankLabel,DeviceLocator,Capcity,Speed,SerialNumber,partnumber
+6) c:\>wmic Memphysical get MaxCapacity, MemoryDevices
+7) C:\>wmic baseboard get product,Manufacturer,version,serialnumber
+8) C:\>wmic bios get Manufacturer, Version, ReleaseDate
+9) C:\>wmic os get Caption, Version, BuildNumber, InstallDater
+
+10) netsh command
+
+1) netsh wlan show profile
+2) netsh wlan show drivers
+3) netsh wlan show interfaces
+
+11) FOR BSOD ERROR 
+
+1)bootrec /fixmbr
+2)bootrec /fixboot
+
+IF ACCESS IS DENIED
+
+USE THIS COMMAND
+
+bootsect/nt60 sys
+
+3)bootrec /rebuild
+
+4) sfc /scannow
+
+5) chkdsk /c:
+
+
+%% command
+
+for ultimate performance option in poweroption 
+c:\>windows>system32>powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+enter
+
+%% Bloatware CMD Command
+@echo off
+powershell -Command "iwr -useb https://christitus.com/win | iex"
+
+Activation for windows 8/10/11
+
+irm https://massgrave.dev/get | iex
+copy in winows Power shell 
+
+%% wifi not showing in windows 11
+
+1)run services & start service WLan AutoConfig
+
+2) device manager uninstall wifi and install again 
+
+3) go to windows/softwaredistribution select all and del it
+
+4) powerflush desktop or laptop
+
+%% Enable gpedit in windows home
+
+c:/>windows/system32 FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum") DO (
+ DISM /Online /NoRestart /Add-Package:"%F"
+ )
+ FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum") DO (
+ DISM /Online /NoRestart /Add-Package:"%F"
+ )
+
+&& REMOVE ACRIVATION WATER MARK USING CMD
+
+RUN CMD WITH ADMINISTRATOR PRIVLLAGE 
+
+C:/bcdedit -set TESTSIGNING OFF
+
+POWESHELL SCRIPT
+irm christitus.com/win | iex
+& ([scriptblock]::Create((irm "https://debloat.raphi.re/")))
+
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+https://www.w3schools.com/react/react_events.asp
+Win2Tech YOUTUBE CHANNEL FOR COMPUTER 
+Britec09
+CyberCPU Tech 
+Ask Your Computer Guy
+Linus Tech Tips
+Chris Titus Tech
+gethub.com
+rare rabbit shirts
+ Tech Raj 
+NCIX Tech Tips 
+Crown GEEK
+MDTechVideos 
+Hardware Savvy 
+PowerCert Animated Videos 
+Brett In Tech 
+
+
+
+To incrase Internet Speed Check These Settings
+
+goto
+devicemamager>wifi driver>advance>prefered band>select 5g
+
+commnad for finding network bandwidth
+netsh wlan show drivers
+
+for 5g redio type support option includes
+802.11a and 802.11ac
+
+to remove activation watermark in windows 10 and 11
+
+command
+1)slmgr -rearm
+
+2)control pannel>ease of access>ease of access center>make the computer esair to see>check remove baground images
+
+3) regedit> find PaintDesktopVersion change value to 1 to 0
+
+reset user password 
+
+to improve internet speed
+
+gpedit>administrative templates>network>Qospacketsechdular>click on limitreservablebandwidth
+
+click on enable
+
+change value 80 to 100
+applay ok
+
+how to convert partion mbr to gpt while installation of windows 10 & 11
+
+while installation
+press shift and f10 key togather
+command prompt appear
+
+x:>sources>Diskpart
+>Diskpart>list disk
+>Diskpart>select disk
+>Diskpart>clean
+>Diskpart>convert GPT 
+
+
+to speed up system
+
+
+Registry paths:
+Startup Programs:
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+MenuShowDelay
+HKEY_CURRENT_USER\Control Panel\Desktop
+
+Visual Effects
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects
+
+LargeSystemCache
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+
+
+
+

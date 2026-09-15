@@ -1,0 +1,111 @@
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+# Create Form
+$form = New-Object System.Windows.Forms.Form
+$form.Text = "Network Drive Troubleshooter - TechSecure Solutions"
+$form.Size = New-Object System.Drawing.Size(600,400)
+$form.StartPosition = "CenterScreen"
+
+# Labels and Inputs
+$lblDrive = New-Object System.Windows.Forms.Label
+$lblDrive.Text = "Drive Letter:"
+$lblDrive.Location = New-Object System.Drawing.Point(30,30)
+$lblDrive.AutoSize = $true
+
+$cbDrive = New-Object System.Windows.Forms.ComboBox
+$cbDrive.Location = New-Object System.Drawing.Point(120,25)
+$cbDrive.Size = New-Object System.Drawing.Size(80,25)
+$cbDrive.Items.AddRange(@("Z:","Y:","X:","W:"))
+
+$lblPath = New-Object System.Windows.Forms.Label
+$lblPath.Text = "Network Path:"
+$lblPath.Location = New-Object System.Drawing.Point(220,30)
+$lblPath.AutoSize = $true
+
+$txtPath = New-Object System.Windows.Forms.TextBox
+$txtPath.Location = New-Object System.Drawing.Point(320,25)
+$txtPath.Size = New-Object System.Drawing.Size(230,25)
+$txtPath.Text = "\\ServerName\SharedFolder"
+
+$lblUser = New-Object System.Windows.Forms.Label
+$lblUser.Text = "Username:"
+$lblUser.Location = New-Object System.Drawing.Point(30,70)
+$lblUser.AutoSize = $true
+
+$txtUser = New-Object System.Windows.Forms.TextBox
+$txtUser.Location = New-Object System.Drawing.Point(120,65)
+$txtUser.Size = New-Object System.Drawing.Size(150,25)
+$txtUser.Text = "DOMAIN\User"
+
+$lblPass = New-Object System.Windows.Forms.Label
+$lblPass.Text = "Password:"
+$lblPass.Location = New-Object System.Drawing.Point(290,70)
+$lblPass.AutoSize = $true
+
+$txtPass = New-Object System.Windows.Forms.TextBox
+$txtPass.Location = New-Object System.Drawing.Point(370,65)
+$txtPass.Size = New-Object System.Drawing.Size(180,25)
+$txtPass.UseSystemPasswordChar = $true
+
+# Buttons
+$btnMap = New-Object System.Windows.Forms.Button
+$btnMap.Text = "Map Drive"
+$btnMap.Location = New-Object System.Drawing.Point(30,120)
+$btnMap.Size = New-Object System.Drawing.Size(150,40)
+
+$btnTest = New-Object System.Windows.Forms.Button
+$btnTest.Text = "Test Connection"
+$btnTest.Location = New-Object System.Drawing.Point(200,120)
+$btnTest.Size = New-Object System.Drawing.Size(150,40)
+
+$btnFix = New-Object System.Windows.Forms.Button
+$btnFix.Text = "Fix Startup Mapping"
+$btnFix.Location = New-Object System.Drawing.Point(370,120)
+$btnFix.Size = New-Object System.Drawing.Size(180,40)
+
+# Output Box
+$txtOutput = New-Object System.Windows.Forms.TextBox
+$txtOutput.Multiline = $true
+$txtOutput.ScrollBars = "Vertical"
+$txtOutput.Location = New-Object System.Drawing.Point(30,180)
+$txtOutput.Size = New-Object System.Drawing.Size(520,150)
+$txtOutput.ReadOnly = $true
+
+# Button Actions
+$btnMap.Add_Click({
+    $drive = $cbDrive.Text
+    $path = $txtPath.Text
+    $user = $txtUser.Text
+    $pass = $txtPass.Text
+    $txtOutput.AppendText("Mapping drive $drive to $path...`r`n")
+    net use $drive /delete /y | Out-Null
+    net use $drive $path /user:$user $pass /persistent:yes
+    if (Test-Path $drive) {
+        $txtOutput.AppendText("Drive mapped successfully.`r`n")
+    } else {
+        $txtOutput.AppendText("Failed to map drive.`r`n")
+    }
+})
+
+$btnTest.Add_Click({
+    $server = ($txtPath.Text.Split("\")[2])
+    $txtOutput.AppendText("Testing connection to $server...`r`n")
+    $ping = Test-Connection -ComputerName $server -Count 2 -ErrorAction SilentlyContinue
+    if ($ping) {
+        $txtOutput.AppendText("Connection successful.`r`n")
+    } else {
+        $txtOutput.AppendText("Connection failed.`r`n")
+    }
+})
+
+$btnFix.Add_Click({
+    $drive = $cbDrive.Text.TrimEnd(':')
+    Set-ItemProperty -Path "HKCU:\Network\$drive" -Name "Reconnect" -Value 1
+    $txtOutput.AppendText("Startup mapping fixed for $drive.`r`n")
+})
+
+# Add controls
+$form.Controls.AddRange(@($lblDrive,$cbDrive,$lblPath,$txtPath,$lblUser,$txtUser,$lblPass,$txtPass,$btnMap,$btnTest,$btnFix,$txtOutput))
+
+$form.ShowDialog()
