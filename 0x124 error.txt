@@ -1,0 +1,14 @@
+1) Get in Bios
+
+* Load Default Setting
+
+* Disable XMP / EXPO profile For RAM
+
+2) Check Overhiting use apps
+
+3) Run Windows Memory Test (mdsched.exe)
+
+4) check drive Health  wmic diskdrive get status
+
+5) Check SMPS
+

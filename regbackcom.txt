@@ -1,0 +1,17 @@
+1.HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager
+
+2. Right-click on Configuration Manager in the left panel, select New > DWORD (32-bit) Value.
+
+3. Name the new value EnablePeriodicBackup
+
+4. Double-click EnablePeriodicBackup, set its Value data to 1, and click OK.
+
+trigger the registry backup task
+
+1. Press Win + R, type taskschd.msc, and press Enter to open Task Scheduler
+
+2.In the left navigation pane, browse to:
+
+3. Task Scheduler Library > Microsoft > Windows > Registry
+
+4. Right-click RegIdleBackup and select Run.

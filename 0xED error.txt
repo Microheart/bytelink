@@ -1,0 +1,7 @@
+1) chkdsk c: /f /r
+2) sfc /scannow
+3) Dism
+4) bootrec /fixmbr ,bootrec /fixboot,bootrec /rebuild
+5) bootsect /nt60 sys
+6) check sata connection 
+7) replace device

@@ -1,0 +1,30 @@
+Primary Registry-Related Stop Codes
+
+1) BAD_SYSTEM_CONFIG_INFO (Stop Code: 0x00000074)
+
+Cause: Indicates that a critical system registry hive is corrupted or missing. 
+Reinstalling or restoring a clean registry hive directly fixes this crash.
+
+2) REGISTRY_ERROR (Stop Code: 0x00000051)
+
+Cause: Occurs when an I/O error occurs while reading/writing 
+a registry file or if the registry is corrupted.
+
+3)CONFIG_INITIALIZATION_FAILED (Stop Code: 0x00000067)
+
+Cause: The system fails to allocate the necessary memory 
+to load the registry hives during startup.
+
+4) RITICAL_PROCESS_DIED (Stop Code: 0x000000EF) (When caused by corrupt registry entries)Cause: 
+Triggered when a critical system process stops running. 
+Restoring a backup helps if a registry tweak disabled an essential service (e.g., svchost.exe, csrss.exe).
+
+5) SYSTEM_THREAD_EXCEPTION_NOT_HANDLED (Stop Code: 0x0000007E) 
+  (Post-registry modification)Cause: Often triggered after modifying startup services,
+ registry-based driver keys, or system-level configuration parameters.
+
+6) When a Registry Backup Will NOT HelpA registry restore will not fix hardware faults or physical file corruption, 
+including:Physical RAM failure (MEMORY_MANAGEMENT - 0x1A)
+Hardware faults/CPU failure 
+(WHEA_UNCORRECTABLE_ERROR - 0x124)
+Corrupted file system sectors on the drive (UNMOUNTABLE_BOOT_VOLUME - 0xED)

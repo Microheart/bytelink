@@ -1,0 +1,3 @@
+dism /online /export-driver /destination:D:\Drivers
+run command msdt.exe -id devicediagnostic
+run command control /name Microsoft.IndexingOptions
